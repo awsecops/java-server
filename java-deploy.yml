@@ -18,7 +18,7 @@ spec:
         app: java-server
     spec:
       containers:
-        - image: 120717539064.dkr.ecr.us-west-2.amazonaws.com/cicd-demo:latest
+        - image: 188691447767.dkr.ecr.ap-south-1.amazonaws.com/java-server:latest
           imagePullPolicy: Always
           name: java-server
           ports:
