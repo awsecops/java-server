@@ -1,26 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-app
   labels:
-    app: java-app
+    app.kubernetes.io/name: java-server
+    app.kubernetes.io/instance: java-server
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/managed-by: kubectl
+  name: java-server
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: java-app
+      app: java-server
   template:
     metadata:
       labels:
-        app: java-app
+        app: java-server
     spec:
       containers:
-      - name: java-app
-        image: nagasatishdocker/java-crud-app:latest
-        ports:
-        - containerPort: 5000
-        resources:
-            limits:
-              cpu: 500m
-            requests:
-               cpu: 100m
+        - image: 120717539064.dkr.ecr.us-west-2.amazonaws.com/cicd-demo:latest
+          imagePullPolicy: Always
+          name: java-server
+          ports:
+            - containerPort: 5000
